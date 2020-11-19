@@ -14,7 +14,7 @@ We'll be using an existing application that includes one model, a few routes, an
 * Run `npm install` to install dependencies from the existing `package.json` file
   * Use `nodemon` to start your application
 * Setup your database (this app already has one existing model)
-  * Run `createdb project_organizer_development` to create the database
+  * Run `sequelize db:create` to create the database
   * Run `sequelize db:migrate` to run migrations
   * Run `sequelize db:seed:all` to populate the database with 4 projects from previous Seattle cohorts.
 
@@ -81,7 +81,7 @@ db.project.findOne({
 })
 ```
 
-Note that these are two possible queries you can perform. There are others that you'll want to test.
+Note that these are two possible queries you can perform. There are others that you'll want to test. Make sure you can have multiple projects associated with a given category, and also multiple categories associated with a given project.
 
 #### Part 3: Integrate the model with the app
 
@@ -90,7 +90,7 @@ Now that the models have been created, you'll want to add the ability to create 
 * Add a field to the existing view associated with `GET /projects/new`. This new field should accept a new category name. 
   * Keep in mind that categories should be associated with projects
   * Category names should be unique; the category model should have no duplicates (hint, use `findOrCreate`)
-* Add to the view associated withe the `POST /projects` route, which allows the user to add categories to each individual project. 
+* Add to the view associated with the `POST /projects` route, which allows the user to add categories to each individual project. 
 * Create the following routes for viewing categories and viewing projects by category:
   * `GET /categories` - show all the categories that exist
   * `GET /categories/:id` - show a specific category and all the projects with that category
